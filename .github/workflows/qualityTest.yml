@@ -19,13 +19,13 @@ jobs:
       - name: Install packages
         run: npm ci
       # csscombのdepsに脆弱性があるので、デフォルトパッケージとしては導入したくない
-      - name: Install csscomb
-        run: npm install csscomb
+      # - name: Install csscomb
+      #   run: npm install csscomb
       - name: Run eslint
         run: npm run lint
       - name: Run markuplint
         run: npm run markuplint
       - name: Run prettier
         run: npm run prettier:check
-      - name: Run csscomb
-        run: npm run csscomb:check
+      # - name: Run csscomb
+      #   run: npm run csscomb:check
