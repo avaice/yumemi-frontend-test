@@ -1,0 +1,25 @@
+.prefectures {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.prefectureInput {
+  line-height: 14px;
+
+  display: block;
+
+  width: 80px;
+  padding: 3px;
+
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+
+  border: solid 2px black;
+  border-radius: 10px;
+}
+
+.prefectureInput:has(input:checked) {
+  color: green;
+  border: solid 2px green;
+}
