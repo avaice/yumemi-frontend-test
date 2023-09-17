@@ -27,6 +27,15 @@ export async function GET(request: Request) {
     urlParams
   )
 
+  if (prefecturesData.result === null) {
+    return NextResponse.json(
+      createResponse({
+        status: 'error',
+        reason: 'invalid prefCode',
+      })
+    )
+  }
+
   return NextResponse.json(
     createResponse({ status: 'ok', data: prefecturesData })
   )
