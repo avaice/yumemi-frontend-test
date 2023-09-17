@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import {
   Chart as ChartJS,
@@ -10,8 +8,14 @@ import {
   Title,
   Tooltip,
   Legend,
+  Colors,
+  ChartData,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
+
+type Props = {
+  dataSet: ChartData<'line', number[], string>
+}
 
 ChartJS.register(
   CategoryScale,
@@ -20,36 +24,26 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Colors
 )
 
-export const options = {
+const options = {
+  animation: {
+    duration: 0,
+  },
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: 'top' as const,
     },
+    colors: {
+      forceOverride: true,
+    },
   },
 }
 
-const labels = ['January', 'February', 'March']
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [100, 200, 300],
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: [100, 200, 300],
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-}
-
-export const Chart = () => <Line options={options} data={data} />
+export const Chart = ({ dataSet }: Props) => (
+  <Line options={options} data={dataSet} />
+)

@@ -15,3 +15,7 @@
 ## 欲しいテスト
 
 - api type validatorがきちんと動作するか
+
+## 見たところ
+
+https://countstheclouds.com/posts/nextjs-useswr-multiple-loading/

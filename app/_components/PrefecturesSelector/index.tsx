@@ -17,14 +17,19 @@ export const PrefecturesSelector = ({ prefectures }: Props) => {
   const onChangeCheckbox = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       if (e.target.checked) {
-        setSelectedPrefectures([...selectedPrefectures, Number(e.target.value)])
+        setSelectedPrefectures([
+          ...selectedPrefectures,
+          prefectures.find((v) => v.prefCode === Number(e.target.value))!,
+        ])
       } else {
         setSelectedPrefectures(
-          selectedPrefectures.filter((v) => v !== Number(e.target.value))
+          selectedPrefectures.filter(
+            (v) => v.prefCode !== Number(e.target.value)
+          )
         )
       }
     },
-    [selectedPrefectures, setSelectedPrefectures]
+    [prefectures, selectedPrefectures, setSelectedPrefectures]
   )
 
   return (
@@ -34,7 +39,11 @@ export const PrefecturesSelector = ({ prefectures }: Props) => {
           <input
             type="checkbox"
             value={v.prefCode}
-            checked={selectedPrefectures.includes(v.prefCode)}
+            checked={
+              selectedPrefectures.findIndex(
+                (pref) => pref.prefCode === v.prefCode
+              ) !== -1
+            }
             onChange={onChangeCheckbox}
           />
           {v.prefName}

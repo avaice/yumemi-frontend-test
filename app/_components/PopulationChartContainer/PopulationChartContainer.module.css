@@ -1,0 +1,51 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.populationChart {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 2 / 1;
+}
+
+.wrap {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+}
+
+.typeSelect {
+  font-size: 20px;
+}
+.typeSelect:has(input:checked) {
+  border-bottom: solid 2px green;
+}
+
+@media screen and (max-width: 500px) {
+  .populationChart {
+    aspect-ratio: 4 / 3;
+  }
+}
