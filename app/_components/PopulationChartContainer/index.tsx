@@ -52,14 +52,9 @@ export const PopulationChartContainer = () => {
   )
   return (
     <div className={styles.populationChart}>
-      {isLoading && (
-        <div className={styles.wrap}>
-          <Image src="/reload.svg" alt="Loading" width={48} height={48} />
-        </div>
-      )}
       {data && data.length !== 0 && (
-        <div className={styles.chart}>
-          <div>
+        <>
+          <div className={styles.typeSelects}>
             {['総人口', '年少人口', '生産年齢人口', '老年人口'].map((v) => (
               <label key={`radio-${v}`} className={styles.typeSelect}>
                 <input
@@ -73,8 +68,15 @@ export const PopulationChartContainer = () => {
               </label>
             ))}
           </div>
-          <PopulationChart populationsData={data ?? []} dataType={dataType} />
-        </div>
+          <div className={styles.chart}>
+            {isLoading && (
+              <div className={styles.wrap}>
+                <Image src="/reload.svg" alt="Loading" width={48} height={48} />
+              </div>
+            )}
+            <PopulationChart populationsData={data ?? []} dataType={dataType} />
+          </div>
+        </>
       )}
     </div>
   )

@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  gap: 2px;
+  gap: 4px;
 }
 
 .prefectureInput {
@@ -17,11 +17,18 @@
   user-select: none;
   text-align: center;
 
-  border: solid 2px black;
+  color: gray;
+  border: solid 1px gray;
   border-radius: 10px;
 }
 
+.prefectureInput:has(input:focus-visible) {
+  outline: solid 2px skyblue;
+}
+
 .prefectureInput:has(input:checked) {
+  font-weight: bold;
+
   color: green;
-  border: solid 2px green;
+  border: solid 1px green;
 }
