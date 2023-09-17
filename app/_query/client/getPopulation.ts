@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 const populationDataSchema = z.object({
-  message: z.string(),
+  message: z.null(),
   result: z.object({
     boundaryYear: z.number(),
     data: z.array(
