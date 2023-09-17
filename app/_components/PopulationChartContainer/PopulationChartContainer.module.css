@@ -36,3 +36,16 @@
   width: 100%;
   height: 100%;
 }
+
+.typeSelect {
+  font-size: 20px;
+}
+.typeSelect:has(input:checked) {
+  border-bottom: solid 2px green;
+}
+
+@media screen and (max-width: 500px) {
+  .populationChart {
+    aspect-ratio: 4 / 3;
+  }
+}
