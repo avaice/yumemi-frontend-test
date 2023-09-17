@@ -22,12 +22,12 @@ export async function GET(request: Request) {
 
   urlParams.set('cityCode', '-')
 
-  const prefecturesData = await getFromResasApi(
+  const populationData = await getFromResasApi(
     'api/v1/population/composition/perYear',
     urlParams
   )
 
-  if (prefecturesData.result === null) {
+  if (populationData.result === null) {
     return NextResponse.json(
       createResponse({
         status: 'error',
@@ -37,6 +37,6 @@ export async function GET(request: Request) {
   }
 
   return NextResponse.json(
-    createResponse({ status: 'ok', data: prefecturesData })
+    createResponse({ status: 'ok', data: populationData })
   )
 }
