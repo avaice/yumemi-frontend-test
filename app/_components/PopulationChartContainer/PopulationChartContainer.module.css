@@ -48,6 +48,9 @@
   gap: 10px;
 }
 
+.typeSelect:has(input:focus-visible) {
+  outline: solid 2px skyblue;
+}
 .typeSelect {
   font-size: 20px;
 
