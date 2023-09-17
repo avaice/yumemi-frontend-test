@@ -7,8 +7,8 @@ export default async function Home() {
 
   return (
     <main>
-      <PrefecturesSelector prefectures={prefectures.result} />
       <h1>都道府県別の総人口推移</h1>
+      <PrefecturesSelector prefectures={prefectures.result} />
       <Chart />
     </main>
   )
