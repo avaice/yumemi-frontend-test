@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { PopulationChart } from '../PopulationChart'
 
 import styles from './PopulationChartContainer.module.css'
+import Image from 'next/image'
 
 export type PopulationData = { prefName: string; data: PopulationDataSchema }
 
@@ -30,23 +31,29 @@ const getPopulationsDataSet = (prefectures: Prefectures) =>
 
 const usePopulationsDataSet = (prefectures: Prefectures) => {
   const [result, setResult] = useState<PopulationData[]>()
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
-    getPopulationsDataSet(prefectures).then((v) => setResult(v))
+    setIsLoading(true)
+    getPopulationsDataSet(prefectures).then((v) => {
+      setResult(v)
+      setIsLoading(false)
+    })
   }, [prefectures])
-  return result
+  return { isLoading, data: result }
 }
 
 export const PopulationChartContainer = () => {
   const selectedPrefectures = useAtomValue(selectedPrefecturesAtom)
-  const data = usePopulationsDataSet(selectedPrefectures)
+  const { isLoading, data } = usePopulationsDataSet(selectedPrefectures)
 
   return (
     <div className={styles.populationChart}>
-      {data?.length === 0 ? (
+      {isLoading && (
         <div className={styles.wrap}>
-          <p>都道府県を選択してください</p>
+          <Image src="/reload.svg" alt="Loading" width={48} height={48} />
         </div>
-      ) : (
+      )}
+      {data?.length !== 0 && (
         <div className={styles.chart}>
           <PopulationChart populationsData={data ?? []} />
         </div>
