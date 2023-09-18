@@ -56,11 +56,7 @@ export const getPopulation = async (prefCode: number) => {
   const urlParams = new URLSearchParams()
   urlParams.set('prefCode', prefCode.toString())
 
-  const populationResult = await fetch(`/api/population?${urlParams}`, {
-    headers: {
-      'Cache-Control': 'max-age=180',
-    },
-  })
+  const populationResult = await fetch(`/api/population?${urlParams}`)
   const populationData = await populationResult.json()
 
   const validatedPopulationData = responseSchema.parse(populationData)
