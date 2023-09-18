@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
-import { getFromResasApi } from '../_utils/getFromResasApi'
 import { createResponse } from '../../_utils/createResponse'
 import { z } from 'zod'
+import { getFromResasApi } from '@/app/_utils/getFromResasApi'
 
 const prefCodeSchema = z.number()
 
