@@ -70,7 +70,7 @@ export const PopulationChartContainer = () => {
           </div>
           <div className={styles.chart}>
             {isLoading && (
-              <div className={styles.wrap}>
+              <div className={styles.loading}>
                 <Image src="/reload.svg" alt="Loading" width={48} height={48} />
               </div>
             )}
