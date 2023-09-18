@@ -8,5 +8,7 @@ export async function GET(_request: Request) {
     )
   }
 
-  return NextResponse.json(createResponse({ status: 'ok', data: null }))
+  return NextResponse.json(
+    createResponse({ status: 'ok', data: Date.now().toLocaleString() })
+  )
 }
