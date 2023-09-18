@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
+import { getFromResasApi } from '../../_utils/getFromResasApi'
 import { createResponse } from '../../_utils/createResponse'
 import { z } from 'zod'
-import { getFromResasApi } from '@/app/_utils/getFromResasApi'
 
 const prefCodeSchema = z.number()
 
@@ -37,6 +37,14 @@ export async function GET(request: Request) {
   }
 
   return NextResponse.json(
-    createResponse({ status: 'ok', data: populationData })
+    createResponse({ status: 'ok', data: populationData }),
+    {
+      headers: {
+        'Cache-Control': 'max-age=10',
+        'CDN-Cache-Control': 'max-age=60',
+        'Vercel-CDN-Cache-Control':
+          'max-age=604800, stale-while-revalidate=3600',
+      },
+    }
   )
 }
