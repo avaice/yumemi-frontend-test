@@ -9,6 +9,13 @@ export async function GET(_request: Request) {
   }
 
   return NextResponse.json(
-    createResponse({ status: 'ok', data: Date.now().toLocaleString() })
+    createResponse({ status: 'ok', data: Date.now().toLocaleString() }),
+    {
+      headers: {
+        'Cache-Control': 'no-cache',
+        'CDN-Cache-Control': 'no-cache',
+        'Vercel-CDN-Cache-Control': 'no-cache',
+      },
+    }
   )
 }
