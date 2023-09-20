@@ -6,9 +6,7 @@ COPY . .
 
 RUN npm ci
 
-
-CMD npm run build
-
+RUN npm run build
 
 CMD [ "npm", "start" ]
 
