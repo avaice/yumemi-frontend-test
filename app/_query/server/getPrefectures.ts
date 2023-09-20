@@ -1,4 +1,4 @@
-import { getFromResasApi } from '@/app/_utils/getFromResasApi'
+import { getFromResasApi } from '../../_utils/getFromResasApi'
 import { z } from 'zod'
 
 const prefecturesSchema = z.array(
