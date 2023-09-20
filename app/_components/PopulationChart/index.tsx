@@ -7,6 +7,7 @@ type Props = {
   dataType: string
 }
 
+// 人口データからChart表示に必要なデータセットへ加工する
 const getDataSet = (populationsData: PopulationData[], dataType: string) => {
   if (populationsData.length === 0) {
     return { labels: [], datasets: [] }

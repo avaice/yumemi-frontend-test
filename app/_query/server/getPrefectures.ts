@@ -15,6 +15,7 @@ const prefecturesDataSchema = z.object({
 
 export type Prefectures = z.infer<typeof prefecturesSchema>
 
+// Privateな環境変数（API_KEY）を使っているので、サーバー側でしか呼び出せない
 export const getPrefectures = async () => {
   const prefecturesData = await getFromResasApi('api/v1/prefectures', null)
 
