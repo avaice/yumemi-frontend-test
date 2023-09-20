@@ -2,9 +2,12 @@
 
 import { Prefectures } from '@/app/_query/server/getPrefectures'
 import styles from './prefecturesSelector.module.css'
-import { useAtom } from 'jotai'
+import { useAtom, useAtomValue } from 'jotai'
 import { useCallback, ChangeEvent } from 'react'
-import { selectedPrefecturesAtom } from '@/app/_utils/atoms'
+import {
+  isLoadingPopulationsAtom,
+  selectedPrefecturesAtom,
+} from '@/app/_utils/atoms'
 
 type Props = {
   prefectures: Prefectures
@@ -14,6 +17,7 @@ export const PrefecturesSelector = ({ prefectures }: Props) => {
   const [selectedPrefectures, setSelectedPrefectures] = useAtom(
     selectedPrefecturesAtom
   )
+  const isLoading = useAtomValue(isLoadingPopulationsAtom)
   const onChangeCheckbox = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       if (e.target.checked) {
@@ -44,6 +48,7 @@ export const PrefecturesSelector = ({ prefectures }: Props) => {
                 (pref) => pref.prefCode === v.prefCode
               ) !== -1
             }
+            disabled={isLoading}
             onChange={onChangeCheckbox}
           />
           {v.prefName}

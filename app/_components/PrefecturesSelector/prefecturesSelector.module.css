@@ -17,8 +17,8 @@
   user-select: none;
   text-align: center;
 
-  color: gray;
-  border: solid 1px gray;
+  color: rgb(115, 115, 115);
+  border: solid 1px rgb(115, 115, 115);
   border-radius: 10px;
 }
 
@@ -31,4 +31,8 @@
 
   color: green;
   border: solid 1px green;
+}
+
+.prefectureInput:has(input:disabled) {
+  cursor: not-allowed;
 }

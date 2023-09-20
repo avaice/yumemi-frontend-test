@@ -1,6 +1,9 @@
 'use client'
-import { useAtomValue } from 'jotai'
-import { selectedPrefecturesAtom } from '@/app/_utils/atoms'
+import { useAtom, useAtomValue } from 'jotai'
+import {
+  isLoadingPopulationsAtom,
+  selectedPrefecturesAtom,
+} from '@/app/_utils/atoms'
 import { Prefectures } from '@/app/_query/server/getPrefectures'
 import {
   PopulationDataSchema,
@@ -31,14 +34,14 @@ const getPopulationsDataSet = (prefectures: Prefectures) =>
 
 const usePopulationsDataSet = (prefectures: Prefectures) => {
   const [result, setResult] = useState<PopulationData[]>()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useAtom(isLoadingPopulationsAtom)
   useEffect(() => {
     setIsLoading(true)
     getPopulationsDataSet(prefectures).then((v) => {
       setResult(v)
       setIsLoading(false)
     })
-  }, [prefectures])
+  }, [prefectures, setIsLoading])
   return { isLoading, data: result }
 }
 
