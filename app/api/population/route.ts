@@ -40,7 +40,7 @@ export async function GET(request: Request) {
     createResponse({ status: 'ok', data: populationData }),
     {
       headers: {
-        'Cache-Control': 'max-age=1800',
+        // 'Cache-Control': 'max-age=1800',
         // 'CDN-Cache-Control': 'max-age=60',
         // 'Vercel-CDN-Cache-Control': 'max-age=3600',
       },
