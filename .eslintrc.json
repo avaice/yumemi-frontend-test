@@ -1,6 +1,6 @@
 {
-  "extends": ["eslint:recommended", "next/core-web-vitals"],
-  "plugins": ["unused-imports", "eslint-plugin-unused-imports"],
+  "extends": ["eslint:recommended", "next/core-web-vitals", "plugin:jest/recommended"],
+  "plugins": ["unused-imports", "eslint-plugin-unused-imports", "jest"],
   "parser": "@typescript-eslint/parser",
   "rules": {
     "no-unused-vars":"off",
