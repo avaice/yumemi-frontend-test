@@ -1,4 +1,4 @@
-name: Run jest
+name: jest
 
 on:
   pull_request:
@@ -16,6 +16,8 @@ jobs:
           node-version: '18'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
+      - name: copy .env
+        run: cp .env.test .env
       - name: Install packages
         run: npm ci
       - name: Show coverage
