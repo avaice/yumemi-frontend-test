@@ -17,6 +17,7 @@ import Image from 'next/image'
 
 export type PopulationData = { prefName: string; data: PopulationDataSchema }
 
+// 複数の都道府県の人口推移を取得して、PopulationChartコンポーネントで必要なまとめたデータに加工する
 const getPopulationsDataSet = (prefectures: Prefectures) =>
   Promise.all(
     prefectures.map((pref) =>
@@ -32,6 +33,7 @@ const getPopulationsDataSet = (prefectures: Prefectures) =>
     )
   )
 
+// getPopulationsDataSetをコンポーネント上で使うためのHook
 const usePopulationsDataSet = (prefectures: Prefectures) => {
   const [result, setResult] = useState<PopulationData[]>()
   const [isLoading, setIsLoading] = useAtom(isLoadingPopulationsAtom)
