@@ -30,11 +30,11 @@ RESAS_API_ENDPOINT="https://opendata.resas-portal.go.jp"
 
 ## 開発ガイドライン
 
-## コミットメッセージ
+### コミットメッセージ
 
 Squash Mergeする（＝PRがマージされた後は使われないコミットメッセージ）ので、最低限何したかがわかれば良いです。
 
-## Pull Request
+### Pull Request
 
 AngularJSのコミットルール（ https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type ）に準拠したタイトルをつけてください。Squash Mergeされるのでタイトルはとても重要です。
 
